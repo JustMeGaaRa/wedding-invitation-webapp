@@ -1,0 +1,1 @@
+Generate a sprite of a frog as a doodle image with a transparent background that I can use on the website. The rest of the image has to be clean, no other elements except the frog itself. Color the image but keep in mind that this has to keep the doodle visual style of the reference image provided.
