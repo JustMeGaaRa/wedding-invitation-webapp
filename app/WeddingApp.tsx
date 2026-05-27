@@ -62,6 +62,7 @@ function IconChevronUp() {
 }
 
 import { submitRSVP } from './actions/rsvp'
+import { trackInviteOpen } from './actions/track'
 
 interface WeddingAppProps {
   guestName: string
@@ -76,6 +77,11 @@ export default function WeddingApp({ guestName, inviteId, questions, initialAnsw
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  /* Track view — runs only in the browser after the page actually renders */
+  useEffect(() => {
+    trackInviteOpen(inviteId).catch(console.error)
+  }, [inviteId])
 
   const scrollToSlide = useCallback((index: number) => {
     const el = document.getElementById(`slide-${index}`)

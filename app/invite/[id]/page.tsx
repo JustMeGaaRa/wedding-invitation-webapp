@@ -2,7 +2,7 @@ import { getGuestById } from "@/lib/guests";
 import { getQuestionnaire } from "@/lib/questionnaire";
 import WeddingApp from "@/app/WeddingApp";
 import { redirect } from "next/navigation";
-import { getRSVP, trackOpen } from "@/lib/airtable";
+import { getRSVP } from "@/lib/airtable";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -17,9 +17,6 @@ export default async function InvitePage({ params }: PageProps) {
   }
 
   const questionnaire = getQuestionnaire();
-  
-  // Track that the invitation was opened (async, don't await to not block render)
-  trackOpen(id, guest.name).catch(console.error);
 
   const existingRSVP = await getRSVP(id);
   
